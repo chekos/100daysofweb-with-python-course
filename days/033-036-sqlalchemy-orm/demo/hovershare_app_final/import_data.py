@@ -37,11 +37,11 @@ def __import_scooters():
     locations = list(session.query(Location).all())
 
     COUNT = 21
-    for _ in range(0, COUNT):
+    for _ in range(COUNT):
         s = Scooter()
         s.model = random.choice(models)
         s.battery_level = 100
-        s.vin = ''.join((random.choice(vin_values) for _ in range(0, 18)))
+        s.vin = ''.join(random.choice(vin_values) for _ in range(18))
         s.location = random.choice(locations)
         session.add(s)
 

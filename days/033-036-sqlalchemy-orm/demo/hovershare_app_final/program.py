@@ -41,7 +41,7 @@ def rent_a_scooter():
     scooters = find_available_scooters(True)
     chose_it = try_int(input('Which one do you want? ')) - 1
 
-    if not (0 <= chose_it or chose_it < len(scooters)):
+    if chose_it < 0 and chose_it >= len(scooters):
         print("Error: Pick another number.")
         return
 

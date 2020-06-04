@@ -47,11 +47,10 @@ class switch:
         :param fallthrough: Optionally fall through to the subsequent case (defaults to False)
         :return:
         """
-        if fallthrough is not None:
-            if self._falling_through:
-                self._func_stack.append(func)
-                if not fallthrough:
-                    self._falling_through = False
+        if fallthrough is not None and self._falling_through:
+            self._func_stack.append(func)
+            if not fallthrough:
+                self._falling_through = False
 
         if isinstance(key, list) or isinstance(key, range):
             found = False

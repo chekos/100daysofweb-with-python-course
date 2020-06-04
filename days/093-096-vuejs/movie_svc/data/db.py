@@ -3,9 +3,9 @@ import csv
 import collections
 from typing import List
 
-__movie_data = dict()
+__movie_data = {}
 __genres = collections.defaultdict(list)
-__top_movies = list()
+__top_movies = []
 
 Movie = collections.namedtuple(
     'Movie',
@@ -17,7 +17,7 @@ def movie_to_dict(m: Movie):
     if not m:
         return {}
 
-    d = dict(
+    return dict(
         imdb_code=m.imdb_code,
         title=m.title,
         director=m.director,
@@ -29,13 +29,10 @@ def movie_to_dict(m: Movie):
         imdb_score=m.imdb_score
     )
 
-    return d
-
 
 def find_by_imdb(imdb_code: str) -> List[Movie]:
     global __movie_data
-    movie = __movie_data.get(imdb_code)
-    return movie
+    return __movie_data.get(imdb_code)
 
 
 def search_keyword(keyword: str) -> List[Movie]:
@@ -171,7 +168,7 @@ def __build_genres():
 
 
 def __make_numerical(text):
-    if not text or not text.strip():
+    if not (text and text.strip()):
         return 0
 
     return int(text)
@@ -195,10 +192,8 @@ def __split_separated_text(text):
         return text
 
     text = text.strip()
-    parts = [
+    return [
         p.strip()
         for p in text.split('|')
         if p and p.strip()
     ]
-
-    return parts
