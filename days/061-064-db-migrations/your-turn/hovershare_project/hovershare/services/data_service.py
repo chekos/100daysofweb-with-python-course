@@ -60,7 +60,7 @@ def rented_scooters() -> List[Scooter]:
     session = session_factory.create_session()
 
     # noinspection PyComparisonWithNone
-    scooters = session.query(Scooter).filter(Scooter.location_id == None).all()
+    scooters = session.query(Scooter).filter(Scooter.location_id is None).all()
 
     return list(scooters)
 

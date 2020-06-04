@@ -39,7 +39,7 @@ def rent_a_scooter():
     scooters = find_available_scooters(True)
     chose_it = try_int(input('Which one do you want? ')) - 1
 
-    if not (0 <= chose_it or chose_it < len(scooters)):
+    if chose_it < 0 and chose_it >= len(scooters):
         print("Error: Pick another number.")
         return
 
@@ -51,10 +51,9 @@ def find_available_scooters(suppress_header=False):
     if not suppress_header:
         print("********* Available scooters: ********* ")
 
-    parked_scooters = []
     # todo show parked scooters
     print()
-    return parked_scooters
+    return []
 
 
 def locate_our_scooters():
